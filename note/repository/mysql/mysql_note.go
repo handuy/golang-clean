@@ -63,7 +63,7 @@ func (note *noteRepo) Update(updateNote domain.Note) error {
 	return nil
 }
 
-func (note *noteRepo) Delete(deleteNote domain.DeletedNote) error {
+func (note *noteRepo) Delete(deleteNote domain.Note) error {
 	result := note.db.Delete(&deleteNote).RowsAffected
 	if result == 0 {
 		return errors.New("Không tìm thấy note")

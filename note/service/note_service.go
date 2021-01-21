@@ -82,7 +82,10 @@ func (note *noteService) Delete(deleteNote domain.DeletedNote, userID string) er
 		return errors.New("Bạn không có quyền xóa note")
 	}
 
-	err := note.noteRepo.Delete(deleteNote)
+	var noteToDelete domain.Note
+	noteToDelete.Id = deleteNote.Id
+
+	err := note.noteRepo.Delete(noteToDelete)
 	if err != nil {
 		return err
 	}

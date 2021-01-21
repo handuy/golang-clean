@@ -26,9 +26,9 @@ func NewNoteHandler(rg *gin.RouterGroup, noteService domain.NoteService, userSer
 
 	notes.GET("/", noteHandler.GetAllNote)
 	notes.GET("/:id", noteHandler.GetNoteById)
-	notes.POST("/new", jwt.Auth(noteHandler.TokenSecret), noteHandler.CreateNote)
-	notes.PUT("/update", jwt.Auth(noteHandler.TokenSecret), noteHandler.UpdateNote)
-	notes.DELETE("/delete", jwt.Auth(noteHandler.TokenSecret), noteHandler.DeleteNote)
+	notes.POST("/", jwt.Auth(noteHandler.TokenSecret), noteHandler.CreateNote)
+	notes.PUT("/:id", jwt.Auth(noteHandler.TokenSecret), noteHandler.UpdateNote)
+	notes.DELETE("/:id", jwt.Auth(noteHandler.TokenSecret), noteHandler.DeleteNote)
 }
 
 func (noteHandler *NoteHandler) GetAllNote(c *gin.Context) {

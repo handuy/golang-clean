@@ -28,5 +28,5 @@ type NoteRepo interface {
 	GetById(id int) (Note, error)
 	Create(newNote Note, author string) (Note, error)
 	Update(updateNote Note) error
-	Delete(deleteNote DeletedNote) error
+	Delete(deleteNote Note) error
 }
